@@ -1,0 +1,29 @@
+<!-- home.html -->
+{% extends "base.html" %} {% block title %}Home{% endblock %} {%block content%}
+<div class="row">
+  {% for image in images %}
+  <div class="col-md-4">
+    <div class="card mb-4 shadow-sm">
+      <img
+        src="{{ image.preview_url }}"
+        class="card-img-top"
+        alt="{{ image.tags }}"
+      />
+      <div class="card-body">
+        <p class="card-text">{{ image.tags }}</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="btn-group">
+            <a
+              href="{% url 'image-detail' image.pk %}"
+              class="btn btn-sm btn-outline-secondary"
+              >View</a
+            >
+          </div>
+          <small class="text-muted">{{ image.user }}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{%endblock%}
